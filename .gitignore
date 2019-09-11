@@ -102,3 +102,13 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+Source code/Server/Include
+Source code/Server/Include/
+Source code/Server/Lib
+Source code/Server/Lib/
+Source code/Server/Scripts
+Source code/Server/Scripts/
+Source code/Server/tcl
+Source code/Server/tcl/
+Source code/LICENSE.txt
