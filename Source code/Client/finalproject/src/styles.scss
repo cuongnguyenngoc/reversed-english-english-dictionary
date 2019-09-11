@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+@import "assets/scss/variables";
+@import 'assets/scss/mixins';
+@import 'assets/scss/shadows';
+@import 'assets/scss/core';
+@import 'assets/scss/ripples';
+
+.hand-mouse:hover {
+  cursor: pointer; cursor: hand;
+}

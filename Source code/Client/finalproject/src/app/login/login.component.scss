@@ -1,0 +1,60 @@
+.division {
+  float: none;
+  margin: 0 auto 18px;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+.division .line {
+  border-top: 1px solid #DFDFDF;
+  position: absolute;
+  top: 10px;
+  width: 34%;
+}
+.division .line.l {
+  left: 0;
+}
+.division .line.r {
+  right: 0;
+}
+.division span {
+  color: #424242;
+  font-size: 17px;
+}
+.box .social {
+  float: none;
+  margin: 0 auto 30px;
+  text-align: center;
+}
+
+.social .circle{
+  background-color: #EEEEEE;
+  color: #FFFFFF;
+  border-radius: 100px;
+  display: inline-block;
+  margin: 0 17px;
+  padding: 5px;
+}
+.social .circle .fa{
+   font-size: 16px;
+}
+.social .facebook{
+  background-color: #455CA8;
+  color: #FFFFFF;
+}
+.social .google{
+  background-color: #F74933;
+}
+.social .twitter{
+  background-color: #1dcaff;
+}
+.facebook:hover{
+  background-color: #6E83CD;
+}
+.google:hover{
+  background-color: #FF7566;
+}
+.twitter:hover{
+  background-color: #4D4D4d;;
+}

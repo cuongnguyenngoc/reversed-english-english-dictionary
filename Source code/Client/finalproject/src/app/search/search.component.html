@@ -1,0 +1,95 @@
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <form (ngSubmit)="search()">
+        <div class="input-group">
+          <span class="input-group-addon">
+            <div class="dropdown">
+              <a href="#" class="btn btn-simple btn-sm dropdown-toggle" data-toggle="dropdown">
+                {{searchby}}
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li *ngFor="let search of searches" class="hand-mouse">
+                  <a href="#" (click)="searchBy($event, search)">{{search}}</a>
+                </li>
+              </ul>
+            </div>
+          </span>
+          <span class="input-group-addon" *ngIf="searchby==='by description'">
+            <div class="dropdown">
+              <a href="#" class="btn btn-simple btn-sm dropdown-toggle" data-toggle="dropdown">
+                {{method}}
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu dropdown-danger">
+                <li *ngFor="let method of methods" class="hand-mouse">
+                  <a href="#" (click)="onSelectMethod($event, method)">{{method}}</a>
+                </li>
+              </ul>
+            </div>
+          </span>
+          <div class="form-group label-floating is-empty">
+            <label class="control-label" *ngIf="searchby==='by description' || searchby==='Choose search by word or description'">Describe word you want to search here</label>
+            <label class="control-label" *ngIf="searchby==='by word'">Look up a word</label>
+            <input type="text" class="form-control" aria-describedby="basic-addon1" [(ngModel)]="description" name="description">
+          </div>
+          <span class="input-group-addon">
+            <span class="hand-mouse" (click)="search()"><i class="material-icons">search</i></span>
+          </span>
+        </div>
+      </form>
+    </div>
+
+    <div class="row">
+      <div class="title-area">
+        <h2>The Best words</h2>
+        <div class="separator separator-danger">✻</div>
+        <p class="description">Look up a word by their description, this will help you thinking in english.</p>
+      </div>
+      <div *ngIf="isLoading">
+        <div class="spinner">
+          <div class="rect1"></div>
+          <div class="rect2"></div>
+          <div class="rect3"></div>
+          <div class="rect4"></div>
+          <div class="rect5"></div>
+        </div>
+      </div>
+      <div [@cardresults]="state" data-toggle="tooltip" data-placement="top" title="<span>Click on each word to see its meaning and examples<span>" data-html="true">
+        <div *ngIf="theBestWords" class="card">
+          <div *ngFor="let word of theBestWords.words">
+            <div class="col-md-2" style="padding-top: 10px; padding-bottom: 10px;">
+              <div class="info-icon card hand-mouse" style="margin-bottom: 0px;" data-toggle="modal" data-target="#myModal" (click)="showMeaningOfWord(word.name)" placement="top">
+                <h4>{{word.name}}</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-10 col-md-offset-1">
+          <div *ngIf="meaning" class="card meaning">
+            <h2>{{meaning.name}} <i><small>{{meaning.pos}}</small></i></h2>
+            <ul class="list-inline">
+              <li *ngFor="let phonetic of meaning.phonetics;  let i = index">
+                <i>{{phonetic.prefix}} /{{phonetic.ipa}}/ </i>
+                <audio id="sound{{i}}" src="{{phonetic.sound}}" preload="auto"></audio>
+                <span (click)="pronounce(i)"><i class="material-icons hand-mouse">volume_up</i></span>
+              </li>
+            </ul>
+            <ol style="padding-left: 17px;">
+              <li *ngFor="let definition of meaning.defintions">
+                <p>{{definition.def_field}}</p>
+                <ul style="padding-left: 17px;">
+                  <li *ngFor="let example of definition.examples"><i>{{example.sentence}}</i></li>
+                </ul>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-word-meaning *ngIf="word" [word]="word" [description]="description"></app-word-meaning>
+

@@ -1,0 +1,39 @@
+<!-- Sart Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" *ngIf="meaning">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          <i class="material-icons">clear</i>
+        </button>
+        <h4 class="modal-title">Word for the description <b><i>***{{description}}***</i></b> :</h4>
+        <h2 class="modal-title">
+          {{word}}
+          <i><small>{{meaning.pos}}</small></i>
+        </h2>
+        <ul class="list-inline">
+          <li *ngFor="let phonetic of meaning.phonetics;  let i = index">
+            <i>{{phonetic.prefix}} /{{phonetic.ipa}}/</i>
+            <audio id="sound{{i}}" src="{{phonetic.sound}}" preload="auto"></audio>
+            <span (click)="pronounce(i)"><i class="material-icons hand-mouse">volume_up</i></span>
+          </li>
+        </ul>
+      </div>
+      <div class="modal-body">
+        <ol>
+          <li *ngFor="let definition of meaning.defintions">
+            <p>{{definition.def_field}}</p>
+            <ul>
+              <li *ngFor="let example of definition.examples"><i>{{example.sentence}}</i></li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+      <div class="modal-footer">
+        <span id="feedback" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="<span>Please click on this button if you see this word satifies you, this will help to improve the search system<span>" data-html="true" (click)="giveGoodFeedback()">Good</span>
+        <button type="button" class="btn btn-warning btn-simple" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--  End Modal -->

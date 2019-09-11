@@ -1,0 +1,34 @@
+<div class="col-md-9 custom-table">
+  <div class="content table-responsive table-full-width">
+    <table class="table table-hover table-striped" *ngIf="wordAndMeaningPairs">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Word</th>
+          <th>Part Of Speech</th>
+          <th>Meaning</th>
+          <th>is approved</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pair of wordAndMeaningPairs; let i = index">
+          <td>{{pair.id}}</td>
+          <td>{{pair.word.name}}</td>
+          <td>{{pair.word.pos}}</td>
+          <td>{{pair.def_field}}</td>
+          <td>
+            <label class="checkbox" (click)="approve(i)">
+              <input type="checkbox" [ngModel]="pair.isapproved" id="isapproved{{i}}">
+              <span class="checkbox-material">
+                <span class="check"></span>
+              </span>
+            </label>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="text-right">
+    <button class="btn btn-info" (click)="saveApproving()">Save</button>
+  </div>
+</div>
