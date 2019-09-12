@@ -19,10 +19,10 @@ from rest_framework_jwt.views import (obtain_jwt_token, verify_jwt_token)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^api/dictionary/crawl/', include("crawler.urls", namespace="crawling")),
-    url(r'^api/dictionary/search/', include("searcher.urls", namespace="searcher")),
-    url(r'^api/dictionary/improve/', include("improver.urls", namespace="improver")),
+    url(r'^api/dictionary/crawl/', include(("crawler.urls", "crawling"), namespace="crawling")),
+    url(r'^api/dictionary/search/', include(("searcher.urls", "searcher"), namespace="searcher")),
+    url(r'^api/dictionary/improve/', include(("improver.urls", "improver"), namespace="improver")),
     url(r'^api/auth/token/', obtain_jwt_token),
     url(r'^api/auth/token-verify/', verify_jwt_token),
-    url(r'^api/admin/', include("admin_manage.urls", namespace="admin-manage")),
+    url(r'^api/admin/', include(("admin_manage.urls", "admin-manage"), namespace="admin-manage")),
 ]

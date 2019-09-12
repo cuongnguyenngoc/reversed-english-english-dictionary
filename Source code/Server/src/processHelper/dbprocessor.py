@@ -3,12 +3,12 @@ import pymysql, os, csv
 class DBProcessor:
 
     def __init__(self):
-        self.conn = pymysql.connect(host="localhost", user="root", password="cuong", db="originenglishdictionary", charset='utf8')
+        self.conn = pymysql.connect(host="localhost", user="root", password="cuong94", db="originenglishdictionary", charset='utf8')
         self.cursor = self.conn.cursor()
 
     def writeAllToDataBase(self, entries_crawled):
 
-        conn = pymysql.connect(host="localhost", user="root", password="cuong", db="originenglishdictionary", charset='utf8')
+        conn = pymysql.connect(host="localhost", user="root", password="cuong94", db="originenglishdictionary", charset='utf8')
         cursor = conn.cursor()
 
         for key, value in entries_crawled.items():
@@ -50,7 +50,7 @@ class DBProcessor:
         conn.close()
 
     def writeEachWordToDataBase(self, word, wordContent):
-        conn = pymysql.connect(host="localhost", user="root", password="cuong", db="originenglishdictionary", charset='utf8')
+        conn = pymysql.connect(host="localhost", user="root", password="cuong94", db="originenglishdictionary", charset='utf8')
         cursor = conn.cursor()
 
         print('word to save to db', word)

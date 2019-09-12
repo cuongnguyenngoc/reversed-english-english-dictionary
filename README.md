@@ -1,1 +1,1 @@
-# reserved-english-english-dictionary
+# reversed-english-english-dictionary
